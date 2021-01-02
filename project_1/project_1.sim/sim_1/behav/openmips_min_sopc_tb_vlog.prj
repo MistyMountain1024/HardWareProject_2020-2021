@@ -1,0 +1,23 @@
+# compile verilog/system verilog design source files
+verilog xil_defaultlib  "../../../code/code/regfile.v"
+verilog xil_defaultlib  "../../../code/code/pc_reg.v"
+verilog xil_defaultlib  "../../../code/code/mem_wb.v"
+verilog xil_defaultlib  "../../../code/code/mem.v"
+verilog xil_defaultlib  "../../../code/code/if_id.v"
+verilog xil_defaultlib  "../../../code/code/id_ex.v"
+verilog xil_defaultlib  "../../../code/code/id.v"
+verilog xil_defaultlib  "../../../code/code/hilo_reg.v"
+verilog xil_defaultlib  "../../../code/code/ex_mem.v"
+verilog xil_defaultlib  "../../../code/code/ex.v"
+verilog xil_defaultlib  "../../../code/code/ctrl.v"
+verilog xil_defaultlib  "../../../code/code/div.v"
+verilog xil_defaultlib  "../../../code/code/openmips.v"
+verilog xil_defaultlib  "../../../code/code/inst_rom.v"
+verilog xil_defaultlib  "../../../code/code/openmips_min_sopc.v"
+verilog xil_defaultlib  "../../../code/code/openmips_min_sopc_tb.v"
+
+# compile glbl module
+verilog xil_defaultlib "glbl.v"
+
+# Do not sort compile order
+nosort
