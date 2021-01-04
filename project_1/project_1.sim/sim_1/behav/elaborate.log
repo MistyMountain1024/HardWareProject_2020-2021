@@ -1,0 +1,64 @@
+Vivado Simulator 2015.2
+Copyright 1986-1999, 2001-2015 Xilinx, Inc. All Rights Reserved.
+Running: G:/Digital_Logic/Vnew/Vivado/2015.2/bin/unwrapped/win64.o/xelab.exe -wto 68bf695aeac948cdb35854984d21ae43 --debug typical --relax --mt 2 -L xil_defaultlib -L unisims_ver -L unimacro_ver -L secureip --snapshot openmips_min_sopc_tb_behav xil_defaultlib.openmips_min_sopc_tb xil_defaultlib.glbl -log elaborate.log 
+Using 2 slave threads.
+WARNING: [XSIM 43-3431] One or more environment variables have been detected which affect the operation of the C compiler. These are typically not set in standard installations and are not tested by Xilinx, however they may be appropriate for your system, so the flow will attempt to continue.  If errors occur, try running fuse with the "-mt off -v 1" switches to see more information from the C compiler. The following environment variables have been detected:
+Starting static elaboration
+WARNING: [VRFC 10-278] actual bit length 1 differs from formal bit length 6 for port int_i [D:/yingzong/vOld/project_1/code/code/openmips.v:551]
+Completed static elaboration
+Starting simulation data flow analysis
+WARNING: [XSIM 43-4099] "D:/yingzong/vOld/project_1/code/code/openmips_min_sopc.v" Line 10. Module openmips_min_sopc doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "D:/yingzong/vOld/project_1/code/code/openmips.v" Line 5. Module openmips doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "D:/yingzong/vOld/project_1/code/code/pc_reg.v" Line 5. Module pc_reg doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "D:/yingzong/vOld/project_1/code/code/if_id.v" Line 5. Module if_id doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "D:/yingzong/vOld/project_1/code/code/id.v" Line 5. Module id doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "D:/yingzong/vOld/project_1/code/code/id_ex.v" Line 5. Module id_ex doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "D:/yingzong/vOld/project_1/code/code/ex.v" Line 5. Module ex doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "D:/yingzong/vOld/project_1/code/code/ex_mem.v" Line 5. Module ex_mem doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "D:/yingzong/vOld/project_1/code/code/mem.v" Line 5. Module mem doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "D:/yingzong/vOld/project_1/code/code/mem_wb.v" Line 5. Module mem_wb doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "D:/yingzong/vOld/project_1/code/code/regfile.v" Line 3. Module regfile doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "D:/yingzong/vOld/project_1/code/code/hilo_reg.v" Line 5. Module hilo_reg doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "D:/yingzong/vOld/project_1/code/code/ctrl.v" Line 5. Module ctrl doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "D:/yingzong/vOld/project_1/code/code/div.v" Line 5. Module div doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "D:/yingzong/vOld/project_1/code/code/inst_rom.v" Line 35. Module inst_rom doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "D:/yingzong/vOld/project_1/code/code/data_ram.v" Line 5. Module data_ram doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "D:/yingzong/vOld/project_1/code/code/openmips_min_sopc.v" Line 10. Module openmips_min_sopc doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "D:/yingzong/vOld/project_1/code/code/openmips.v" Line 5. Module openmips doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "D:/yingzong/vOld/project_1/code/code/pc_reg.v" Line 5. Module pc_reg doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "D:/yingzong/vOld/project_1/code/code/if_id.v" Line 5. Module if_id doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "D:/yingzong/vOld/project_1/code/code/id.v" Line 5. Module id doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "D:/yingzong/vOld/project_1/code/code/id_ex.v" Line 5. Module id_ex doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "D:/yingzong/vOld/project_1/code/code/ex.v" Line 5. Module ex doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "D:/yingzong/vOld/project_1/code/code/ex_mem.v" Line 5. Module ex_mem doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "D:/yingzong/vOld/project_1/code/code/mem.v" Line 5. Module mem doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "D:/yingzong/vOld/project_1/code/code/mem_wb.v" Line 5. Module mem_wb doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "D:/yingzong/vOld/project_1/code/code/regfile.v" Line 3. Module regfile doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "D:/yingzong/vOld/project_1/code/code/hilo_reg.v" Line 5. Module hilo_reg doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "D:/yingzong/vOld/project_1/code/code/ctrl.v" Line 5. Module ctrl doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "D:/yingzong/vOld/project_1/code/code/div.v" Line 5. Module div doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "D:/yingzong/vOld/project_1/code/code/inst_rom.v" Line 35. Module inst_rom doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "D:/yingzong/vOld/project_1/code/code/data_ram.v" Line 5. Module data_ram doesn't have a timescale but at least one module in design has a timescale.
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling module xil_defaultlib.pc_reg
+Compiling module xil_defaultlib.if_id
+Compiling module xil_defaultlib.id
+Compiling module xil_defaultlib.id_ex
+Compiling module xil_defaultlib.ex
+Compiling module xil_defaultlib.ex_mem
+Compiling module xil_defaultlib.mem
+Compiling module xil_defaultlib.mem_wb
+Compiling module xil_defaultlib.regfile
+Compiling module xil_defaultlib.hilo_reg
+Compiling module xil_defaultlib.ctrl
+Compiling module xil_defaultlib.div
+Compiling module xil_defaultlib.cp0_reg
+Compiling module xil_defaultlib.openmips
+Compiling module xil_defaultlib.inst_rom
+Compiling module xil_defaultlib.data_ram
+Compiling module xil_defaultlib.openmips_min_sopc
+Compiling module xil_defaultlib.openmips_min_sopc_tb
+Compiling module xil_defaultlib.glbl
+Waiting for 2 sub-compilation(s) to finish...
+Built simulation snapshot openmips_min_sopc_tb_behav

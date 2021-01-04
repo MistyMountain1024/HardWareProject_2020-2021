@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="openmips_min_sopc_tb_behav.wdb" id="1">
+         <top_modules>
+            <top_module name="glbl" />
+            <top_module name="openmips_min_sopc_tb" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <WVObjectSize size="29" />
+   <wvobject db_ref_id="1" fp_name="/openmips_min_sopc_tb/CLOCK_50" type="logic">
+      <obj_property name="ElementShortName">CLOCK_50</obj_property>
+      <obj_property name="ObjectShortName">CLOCK_50</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" fp_name="/openmips_min_sopc_tb/rst" type="logic">
+      <obj_property name="ElementShortName">rst</obj_property>
+      <obj_property name="ObjectShortName">rst</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" fp_name="/openmips_min_sopc_tb/openmips_min_sopc0/openmips0/regfile1/regs[1]" type="array">
+      <obj_property name="ElementShortName">[1][31:0]</obj_property>
+      <obj_property name="ObjectShortName">regs[1][31:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" fp_name="/openmips_min_sopc_tb/openmips_min_sopc0/openmips0/regfile1/regs[2]" type="array">
+      <obj_property name="ElementShortName">[2][31:0]</obj_property>
+      <obj_property name="ObjectShortName">regs[2][31:0]</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" fp_name="/openmips_min_sopc_tb/openmips_min_sopc0/openmips0/cp0_reg/compare_o" type="array">
+      <obj_property name="ElementShortName">compare_o[31:0]</obj_property>
+      <obj_property name="ObjectShortName">compare_o[31:0]</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" fp_name="/openmips_min_sopc_tb/openmips_min_sopc0/openmips0/cp0_reg/count_o" type="array">
+      <obj_property name="ElementShortName">count_o[31:0]</obj_property>
+      <obj_property name="ObjectShortName">count_o[31:0]</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" fp_name="/openmips_min_sopc_tb/openmips_min_sopc0/openmips0/cp0_reg/status_o" type="array">
+      <obj_property name="ElementShortName">status_o[31:0]</obj_property>
+      <obj_property name="ObjectShortName">status_o[31:0]</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" fp_name="/openmips_min_sopc_tb/openmips_min_sopc0/openmips0/if_id0/if_pc" type="array">
+      <obj_property name="ElementShortName">if_pc[31:0]</obj_property>
+      <obj_property name="ObjectShortName">if_pc[31:0]</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" fp_name="/openmips_min_sopc_tb/openmips_min_sopc0/openmips0/if_id0/if_inst" type="array">
+      <obj_property name="ElementShortName">if_inst[31:0]</obj_property>
+      <obj_property name="ObjectShortName">if_inst[31:0]</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" fp_name="/openmips_min_sopc_tb/openmips_min_sopc0/openmips0/if_id0/id_pc" type="array">
+      <obj_property name="ElementShortName">id_pc[31:0]</obj_property>
+      <obj_property name="ObjectShortName">id_pc[31:0]</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" fp_name="/openmips_min_sopc_tb/openmips_min_sopc0/openmips0/if_id0/id_inst" type="array">
+      <obj_property name="ElementShortName">id_inst[31:0]</obj_property>
+      <obj_property name="ObjectShortName">id_inst[31:0]</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" fp_name="/openmips_min_sopc_tb/openmips_min_sopc0/openmips0/cp0_reg/timer_int_o" type="logic">
+      <obj_property name="ElementShortName">timer_int_o</obj_property>
+      <obj_property name="ObjectShortName">timer_int_o</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" fp_name="/openmips_min_sopc_tb/openmips_min_sopc0/openmips0/cp0_reg/we_i" type="logic">
+      <obj_property name="ElementShortName">we_i</obj_property>
+      <obj_property name="ObjectShortName">we_i</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" fp_name="/openmips_min_sopc_tb/openmips_min_sopc0/openmips0/cp0_reg/waddr_i" type="array">
+      <obj_property name="ElementShortName">waddr_i[4:0]</obj_property>
+      <obj_property name="ObjectShortName">waddr_i[4:0]</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" fp_name="/openmips_min_sopc_tb/openmips_min_sopc0/openmips0/cp0_reg/raddr_i" type="array">
+      <obj_property name="ElementShortName">raddr_i[4:0]</obj_property>
+      <obj_property name="ObjectShortName">raddr_i[4:0]</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" fp_name="/openmips_min_sopc_tb/openmips_min_sopc0/openmips0/cp0_reg/data_i" type="array">
+      <obj_property name="ElementShortName">data_i[31:0]</obj_property>
+      <obj_property name="ObjectShortName">data_i[31:0]</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" fp_name="/openmips_min_sopc_tb/openmips_min_sopc0/openmips0/ex0/cp0_reg_data_i" type="array">
+      <obj_property name="ElementShortName">cp0_reg_data_i[31:0]</obj_property>
+      <obj_property name="ObjectShortName">cp0_reg_data_i[31:0]</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" fp_name="/openmips_min_sopc_tb/openmips_min_sopc0/openmips0/ex0/cp0_reg_data_i" type="array">
+      <obj_property name="ElementShortName">cp0_reg_data_i[31:0]</obj_property>
+      <obj_property name="ObjectShortName">cp0_reg_data_i[31:0]</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" fp_name="/openmips_min_sopc_tb/openmips_min_sopc0/openmips0/cp0_reg/data_o" type="array">
+      <obj_property name="ElementShortName">data_o[31:0]</obj_property>
+      <obj_property name="ObjectShortName">data_o[31:0]</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" fp_name="/openmips_min_sopc_tb/openmips_min_sopc0/openmips0/cp0_reg/raddr_i" type="array">
+      <obj_property name="ElementShortName">raddr_i[4:0]</obj_property>
+      <obj_property name="ObjectShortName">raddr_i[4:0]</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" fp_name="/openmips_min_sopc_tb/openmips_min_sopc0/openmips0/cp0_reg/waddr_i" type="array">
+      <obj_property name="ElementShortName">waddr_i[4:0]</obj_property>
+      <obj_property name="ObjectShortName">waddr_i[4:0]</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" fp_name="/openmips_min_sopc_tb/openmips_min_sopc0/openmips0/ex0/cp0_reg_data_o" type="array">
+      <obj_property name="ElementShortName">cp0_reg_data_o[31:0]</obj_property>
+      <obj_property name="ObjectShortName">cp0_reg_data_o[31:0]</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" fp_name="/openmips_min_sopc_tb/openmips_min_sopc0/openmips0/ex_mem0/ex_cp0_reg_data" type="array">
+      <obj_property name="ElementShortName">ex_cp0_reg_data[31:0]</obj_property>
+      <obj_property name="ObjectShortName">ex_cp0_reg_data[31:0]</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" fp_name="/openmips_min_sopc_tb/openmips_min_sopc0/openmips0/ex_mem0/mem_cp0_reg_data" type="array">
+      <obj_property name="ElementShortName">mem_cp0_reg_data[31:0]</obj_property>
+      <obj_property name="ObjectShortName">mem_cp0_reg_data[31:0]</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" fp_name="/openmips_min_sopc_tb/openmips_min_sopc0/openmips0/mem0/cp0_reg_data_i" type="array">
+      <obj_property name="ElementShortName">cp0_reg_data_i[31:0]</obj_property>
+      <obj_property name="ObjectShortName">cp0_reg_data_i[31:0]</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" fp_name="/openmips_min_sopc_tb/openmips_min_sopc0/openmips0/mem0/cp0_reg_data_o" type="array">
+      <obj_property name="ElementShortName">cp0_reg_data_o[31:0]</obj_property>
+      <obj_property name="ObjectShortName">cp0_reg_data_o[31:0]</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" fp_name="/openmips_min_sopc_tb/openmips_min_sopc0/openmips0/mem_wb0/mem_cp0_reg_data" type="array">
+      <obj_property name="ElementShortName">mem_cp0_reg_data[31:0]</obj_property>
+      <obj_property name="ObjectShortName">mem_cp0_reg_data[31:0]</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" fp_name="/openmips_min_sopc_tb/openmips_min_sopc0/openmips0/mem_wb0/wb_cp0_reg_data" type="array">
+      <obj_property name="ElementShortName">wb_cp0_reg_data[31:0]</obj_property>
+      <obj_property name="ObjectShortName">wb_cp0_reg_data[31:0]</obj_property>
+   </wvobject>
+   <wvobject db_ref_id="1" fp_name="/openmips_min_sopc_tb/openmips_min_sopc0/openmips0/cp0_reg/data_i" type="array">
+      <obj_property name="ElementShortName">data_i[31:0]</obj_property>
+      <obj_property name="ObjectShortName">data_i[31:0]</obj_property>
+   </wvobject>
+</wave_config>
