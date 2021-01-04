@@ -1,4 +1,4 @@
-// IF/ID�׶εļĴ���
+// IF/ID阶段的寄存器
 
 `include "defines.v"
 
@@ -16,7 +16,7 @@ module if_id(
 	
 );
 
-	always @ (posedge clk) begin
+	always @ (negedge clk) begin
 		if (rst == `RstEnable) begin
 			id_pc <= `ZeroWord;
 			id_inst <= `ZeroWord;

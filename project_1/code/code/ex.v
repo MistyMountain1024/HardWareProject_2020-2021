@@ -13,6 +13,7 @@ module ex(
 	input wire[`RegBus]           reg2_i,
 	input wire[`RegAddrBus]       wd_i,
 	input wire                    wreg_i,
+	input wire[`RegBus]			  inst_i,		// 当前处于执行阶段的指令
 
 	//HI、LO寄存器的值
 	input wire[`RegBus]           hi_i,
@@ -30,6 +31,12 @@ module ex(
 
 	input wire[`DoubleRegBus]     hilo_temp_i,
 	input wire[1:0]               cnt_i,
+
+	// 处于执行阶段的转移指令要保存的返回地址
+	input wire[`RegBus] link_address_i,
+
+	// 当前执行阶段的指令是否位于延迟槽
+	input wire is_in_delayslot_i,
 
 	//与除法模块相连
 	input wire[`DoubleRegBus]     div_result_i,
@@ -51,7 +58,29 @@ module ex(
 	output reg                    div_start_o,
 	output reg                    signed_div_o,
 
-	output reg stallreq       			
+	output reg stallreq,
+
+	// 访存指令相关的输出接口
+	output wire[`AluOpBus]		  aluop_o,		// 执行阶段的指令要进行的运算子类型
+	output wire[`RegBus]		  mem_addr_o,	// 访存指令对应的存储器地址
+	output wire[`RegBus]		  reg2_o,		// 存储指令要存储的数据
+
+	// 协处理器访问指令相关
+	//// 输入
+	input wire[`RegBus] cp0_reg_data_i,			// 从CP0模块读取的指定寄存器的值
+	////// 访存阶段
+	input wire mem_cp0_reg_we,					// 访存阶段的指令是否要写CP0中的寄存器
+	input wire[4:0] mem_cp0_reg_write_addr,
+	input wire[`RegBus] mem_cp0_reg_data,
+	////// 写回阶段
+  	input wire wb_cp0_reg_we,					// 写回阶段的指令是否要写CP0
+	input wire[4:0] wb_cp0_reg_write_addr,
+	input wire[`RegBus] wb_cp0_reg_data,
+	//// 输出
+	output reg[4:0] cp0_reg_read_addr_o,		// 执行阶段的指令要读取的CP0中寄存器的地址
+	output reg cp0_reg_we_o,					//            ……是否要写CP0中的寄存器
+	output reg[4:0] cp0_reg_write_addr_o,		// 			  ……要写的CP0中寄存器的地址
+	output reg[`RegBus] cp0_reg_data_o			// 			  ……要写的数据
 	
 );
 
@@ -71,9 +100,16 @@ module ex(
 	wire[`RegBus] opdata1_mult;
 	wire[`RegBus] opdata2_mult;
 	wire[`DoubleRegBus] hilo_temp;
-	reg[`DoubleRegBus] hilo_temp1;
-	reg stallreq_for_madd_msub;			
+	reg[`DoubleRegBus] hilo_temp1;		
 	reg stallreq_for_div;
+
+	//访存指令相关
+	// 将aluop_o传递到访存阶段并用来确定访存操作的类型
+	assign aluop_o = aluop_i;
+	// 将mem_addr_o传递到访存阶段作为访存操作对应的存储器地址
+	assign mem_addr_o = reg1_i + {{16{inst_i[15]}}, inst_i[15:0]};
+	// 将存储指令要存储的数据z值reg2_i通过reg2_o接口传递到访存阶段
+	assign reg2_o = reg2_i;
 			
 	always @ (*) begin
 		if(rst == `RstEnable) begin
@@ -199,7 +235,7 @@ module ex(
 	end	
 
   	always @ (*) begin
-    	stallreq = stallreq_for_madd_msub || stallreq_for_div;
+    	stallreq = stallreq_for_div;
   	end
 
   	//MADD、MADDU、MSUB、MSUBU指令
@@ -207,38 +243,32 @@ module ex(
 		if(rst == `RstEnable) begin
 			hilo_temp_o <= {`ZeroWord,`ZeroWord};
 			cnt_o <= 2'b00;
-			stallreq_for_madd_msub <= `NoStop;
 		end else begin
 			case (aluop_i) 
 				`EXE_MADD_OP, `EXE_MADDU_OP: begin
 					if(cnt_i == 2'b00) begin
 						hilo_temp_o <= mulres;
 						cnt_o <= 2'b01;
-						stallreq_for_madd_msub <= `Stop;
 						hilo_temp1 <= {`ZeroWord,`ZeroWord};
 					end else if(cnt_i == 2'b01) begin
 						hilo_temp_o <= {`ZeroWord,`ZeroWord};						
 						cnt_o <= 2'b10;
 						hilo_temp1 <= hilo_temp_i + {HI,LO};
-						stallreq_for_madd_msub <= `NoStop;
 					end
 				end
 				`EXE_MSUB_OP, `EXE_MSUBU_OP: begin
 					if(cnt_i == 2'b00) begin
 						hilo_temp_o <=  ~mulres + 1 ;
 						cnt_o <= 2'b01;
-						stallreq_for_madd_msub <= `Stop;
 					end else if(cnt_i == 2'b01) begin
 						hilo_temp_o <= {`ZeroWord,`ZeroWord};						
 						cnt_o <= 2'b10;
 						hilo_temp1 <= hilo_temp_i + {HI,LO};
-						stallreq_for_madd_msub <= `NoStop;
 					end				
 				end
 				default:	begin
 					hilo_temp_o <= {`ZeroWord,`ZeroWord};
-					cnt_o <= 2'b00;
-					stallreq_for_madd_msub <= `NoStop;				
+					cnt_o <= 2'b00;				
 				end
 			endcase
 		end
@@ -248,32 +278,32 @@ module ex(
 	always @ (*) begin
 		if(rst == `RstEnable) begin
 			stallreq_for_div <= `NoStop;
-	    div_opdata1_o <= `ZeroWord;
+	    	div_opdata1_o <= `ZeroWord;
 			div_opdata2_o <= `ZeroWord;
 			div_start_o <= `DivStop;
 			signed_div_o <= 1'b0;
 		end else begin
 			stallreq_for_div <= `NoStop;
-	    div_opdata1_o <= `ZeroWord;
+	    	div_opdata1_o <= `ZeroWord;
 			div_opdata2_o <= `ZeroWord;
 			div_start_o <= `DivStop;
 			signed_div_o <= 1'b0;	
 			case (aluop_i) 
 				`EXE_DIV_OP: begin
 					if(div_ready_i == `DivResultNotReady) begin
-	    			div_opdata1_o <= reg1_i;
+	    				div_opdata1_o <= reg1_i;
 						div_opdata2_o <= reg2_i;
 						div_start_o <= `DivStart;
 						signed_div_o <= 1'b1;
 						stallreq_for_div <= `Stop;
 					end else if(div_ready_i == `DivResultReady) begin
-	    			div_opdata1_o <= reg1_i;
+	    				div_opdata1_o <= reg1_i;
 						div_opdata2_o <= reg2_i;
 						div_start_o <= `DivStop;
 						signed_div_o <= 1'b1;
 						stallreq_for_div <= `NoStop;
 					end else begin						
-	    			div_opdata1_o <= `ZeroWord;
+	    				div_opdata1_o <= `ZeroWord;
 						div_opdata2_o <= `ZeroWord;
 						div_start_o <= `DivStop;
 						signed_div_o <= 1'b0;
@@ -314,17 +344,29 @@ module ex(
 	  	end else begin
 			moveres <= `ZeroWord;
 			case (aluop_i)
-				`EXE_MFHI_OP:		begin
+				`EXE_MFHI_OP: begin
 					moveres <= HI;
 				end
-				`EXE_MFLO_OP:		begin
+				`EXE_MFLO_OP: begin
 					moveres <= LO;
 				end
-				`EXE_MOVZ_OP:		begin
+				`EXE_MOVZ_OP: begin
 					moveres <= reg1_i;
 				end
-				`EXE_MOVN_OP:		begin
+				`EXE_MOVN_OP: begin
 					moveres <= reg1_i;
+				end
+				`EXE_MFC0_OP: begin
+					cp0_reg_read_addr_o <= inst_i[15:11];	// 要从CP0中读取的寄存器的地址
+					moveres <= cp0_reg_data_i;				// 读取到的CP0中指定寄存器的值
+					// 此时的moveres并不一定是CP0中指定寄存器的最新值，所以需要判断是否存在数据相关
+					if(mem_cp0_reg_we == `WriteEnable && 
+								mem_cp0_reg_write_addr == inst_i[15:11]) begin	// 与访存阶段存在数据相关
+	   					moveres <= mem_cp0_reg_data;
+	   				end else if(wb_cp0_reg_we == `WriteEnable &&
+	   				 			wb_cp0_reg_write_addr == inst_i[15:11]) begin	// 与写回阶段存在数据相关
+	   					moveres <= wb_cp0_reg_data;
+	   				end
 				end
 				default : begin
 				end
@@ -340,24 +382,29 @@ module ex(
 		end else begin
 			wreg_o <= wreg_i;
 		end
-	 
-		case ( alusel_i ) 
-			`EXE_RES_LOGIC:		begin
+		case (alusel_i) 
+			`EXE_RES_LOGIC:	 begin
 				wdata_o <= logicout;
 			end
-			`EXE_RES_SHIFT:		begin
+			`EXE_RES_SHIFT: begin
 				wdata_o <= shiftres;
 			end	 	
-			`EXE_RES_MOVE:		begin
+			`EXE_RES_MOVE: begin
 				wdata_o <= moveres;
 			end	 	
-			`EXE_RES_ARITHMETIC:	begin
+			`EXE_RES_ARITHMETIC: begin
 				wdata_o <= arithmeticres;
 			end
-			`EXE_RES_MUL:		begin
+			`EXE_RES_MUL: begin
 				wdata_o <= mulres[31:0];
-			end	 	
-			default:					begin
+			end
+			`EXE_RES_JUMP_BRANCH: begin
+				wdata_o <= link_address_i;		// 将返回地址link_address_i作为要写入目的寄存器的值赋给wdata_o
+			end
+			`EXE_RES_MOVE: begin
+				wdata_o <= moveres;
+			end	
+			default: begin
 				wdata_o <= `ZeroWord;
 			end
 		endcase
@@ -396,6 +443,23 @@ module ex(
 			whilo_o <= `WriteDisable;
 			hi_o <= `ZeroWord;
 			lo_o <= `ZeroWord;
+		end				
+	end
+
+	// 判断，如果是mtc0指令
+	always @ (*) begin
+		if(rst == `RstEnable) begin
+			cp0_reg_write_addr_o <= 5'b00000;
+			cp0_reg_we_o <= `WriteDisable;
+			cp0_reg_data_o <= `ZeroWord;
+		end else if(aluop_i == `EXE_MTC0_OP) begin
+			cp0_reg_we_o <= `WriteEnable;
+			cp0_reg_write_addr_o <= inst_i[15:11];
+			cp0_reg_data_o <= reg1_i;
+	  	end else begin
+			cp0_reg_write_addr_o <= 5'b00000;
+			cp0_reg_we_o <= `WriteDisable;
+			cp0_reg_data_o <= `ZeroWord;
 		end				
 	end			
 

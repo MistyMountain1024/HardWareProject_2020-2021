@@ -1,0 +1,10 @@
+#-----------------------------------------------------------
+# Vivado v2015.2 (64-bit)
+# SW Build 1266856 on Fri Jun 26 16:35:25 MDT 2015
+# IP Build 1264090 on Wed Jun 24 14:22:01 MDT 2015
+# Start of session at: Sat Jan 02 20:11:01 2021
+# Process ID: 28344
+# Log file: D:/yingzong/vOld/project_1/project_1.runs/synth_1/openmips_min_sopc_tb.vds
+# Journal file: D:/yingzong/vOld/project_1/project_1.runs/synth_1\vivado.jou
+#-----------------------------------------------------------
+source openmips_min_sopc_tb.tcl -notrace
