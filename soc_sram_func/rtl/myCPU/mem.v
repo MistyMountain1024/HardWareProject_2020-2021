@@ -1,4 +1,4 @@
-// ·Ã´æ½×¶Î
+// ï¿½Ã´ï¿½×¶ï¿½
 
 `include "defines.v"
 
@@ -7,44 +7,44 @@ module mem(
 	input wire rst,
 
 	
-	//À´×ÔÖ´ÐÐ½×¶ÎµÄÐÅ??	
+	//ï¿½ï¿½ï¿½ï¿½Ö´ï¿½Ð½×¶Îµï¿½ï¿½ï¿½??	
 	input wire[`RegAddrBus] wd_i,
 	input wire wreg_i,
 	input wire[`RegBus] wdata_i,
 	input wire[`RegBus] hi_i,
 	input wire[`RegBus] lo_i,
-	input wire whilo_i,			// ·Ã´æ½×¶ÎµÄÖ¸ÁîÊÇ·ñÒªÐ´HI¡¢LO¼Ä´æ??
+	input wire whilo_i,			// ï¿½Ã´ï¿½×¶Îµï¿½Ö¸ï¿½ï¿½ï¿½Ç·ï¿½ÒªÐ´HIï¿½ï¿½LOï¿½Ä´ï¿½??
 
 	input wire[`InstAddrBus] pc_mem_i,
 
-	// ·Ã´æÖ¸ÁîÏà¹Ø
-	//// À´×ÔÖ´ÐÐ½×¶ÎµÄÐÅ??
-	input wire[`AluOpBus] aluop_i,		// ·Ã´æ½×¶ÎµÄÖ¸ÁîÒª½øÐÐµÄÔËËãµÄ×ÓÀà??
-	input wire[`RegBus] mem_addr_i,		// ·Ã´æ½×¶ÎµÄ·Ã´æÖ¸Áî¶ÔÓ¦µÄ´æ´¢Æ÷µØ??
-	input wire[`RegBus] reg2_i,			// ·Ã´æÖ¸ÁîÒª´æ´¢µÄÊý¾Ý
-	//// À´×ÔRAMµÄÐÅ??
-	input wire[`RegBus] mem_data_i,		// ´ÓÊý¾Ý´æ´¢Æ÷¶ÁÈ¡µÄÊý??
+	// ï¿½Ã´ï¿½Ö¸ï¿½ï¿½ï¿½ï¿½ï¿½
+	//// ï¿½ï¿½ï¿½ï¿½Ö´ï¿½Ð½×¶Îµï¿½ï¿½ï¿½??
+	input wire[`AluOpBus] aluop_i,		// ï¿½Ã´ï¿½×¶Îµï¿½Ö¸ï¿½ï¿½Òªï¿½ï¿½ï¿½Ðµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½??
+	input wire[`RegBus] mem_addr_i,		// ï¿½Ã´ï¿½×¶ÎµÄ·Ã´ï¿½Ö¸ï¿½ï¿½ï¿½Ó¦ï¿½Ä´æ´¢ï¿½ï¿½ï¿½ï¿½??
+	input wire[`RegBus] reg2_i,			// ï¿½Ã´ï¿½Ö¸ï¿½ï¿½Òªï¿½æ´¢ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	//// ï¿½ï¿½ï¿½ï¿½RAMï¿½ï¿½ï¿½ï¿½??
+	input wire[`RegBus] mem_data_i,		// ï¿½ï¿½ï¿½ï¿½ï¿½Ý´æ´¢ï¿½ï¿½ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½??
 
-	// Ð­´¦ÀíÆ÷·ÃÎÊ(??)²Ù×÷Ïà¹ØÊäÈë
+	// Ð­ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½(??)ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	input wire cp0_reg_we_i,
 	input wire[4:0] cp0_reg_write_addr_i,
 	input wire[`RegBus] cp0_reg_data_i,
 	
-	//ËÍµ½»ØÐ´½×¶ÎµÄÐÅ??
+	//ï¿½Íµï¿½ï¿½ï¿½Ð´ï¿½×¶Îµï¿½ï¿½ï¿½??
 	output reg[`RegAddrBus] wd_o,
 	output reg wreg_o,
 	output reg[`RegBus] wdata_o,
 	output reg[`RegBus] hi_o,
 	output reg[`RegBus] lo_o,
-	output reg whilo_o,			// ·Ã´æ½×¶ÎµÄÖ¸Áî×îÖÕÊÇ·ñÒªÐ´HI¡¢LO¼Ä´æ??
-	// ·Ã´æÖ¸ÁîÏà¹Ø£¬???µ½RAMµÄÐÅ??
-	output reg[`RegBus] mem_addr_o,		// Òª·ÃÎÊµÄµÄ´æ´¢Æ÷µØÖ·
-	//output wire mem_we_o,				// ÊÇ·ñÊÇÐ´²Ù×÷??1£ºÐ´
-	output reg[3:0]	mem_sel_o,			// ×Ö½ÚÑ¡ÔñÐÅºÅ£¬¿í¶È¶ÔÓ¦Êý¾Ý???Ïß??4¸ö×Ö??
-	output reg[`RegBus] mem_data_o,		// ÒªÐ´?? Êý¾Ý´æ´¢Æ÷µÄÊý¾Ý
-	output reg mem_ce_o,				// Êý¾Ý´æ´¢Æ÷Ê¹ÄÜÐÅ??
+	output reg whilo_o,			// ï¿½Ã´ï¿½×¶Îµï¿½Ö¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç·ï¿½ÒªÐ´HIï¿½ï¿½LOï¿½Ä´ï¿½??
+	// ï¿½Ã´ï¿½Ö¸ï¿½ï¿½ï¿½ï¿½Ø£ï¿½???ï¿½ï¿½RAMï¿½ï¿½ï¿½ï¿½??
+	output reg[`RegBus] mem_addr_o,		// Òªï¿½ï¿½ï¿½ÊµÄµÄ´æ´¢ï¿½ï¿½ï¿½ï¿½Ö·
+	//output wire mem_we_o,				// ï¿½Ç·ï¿½ï¿½ï¿½Ð´ï¿½ï¿½ï¿½ï¿½??1ï¿½ï¿½Ð´
+	output reg[3:0]	mem_sel_o,			// ï¿½Ö½ï¿½Ñ¡ï¿½ï¿½ï¿½ÅºÅ£ï¿½ï¿½ï¿½ï¿½È¶ï¿½Ó¦ï¿½ï¿½ï¿½ï¿½???ï¿½ï¿½??4ï¿½ï¿½ï¿½ï¿½??
+	output reg[`RegBus] mem_data_o,		// ÒªÐ´?? ï¿½ï¿½ï¿½Ý´æ´¢ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	output reg mem_ce_o,				// ï¿½ï¿½ï¿½Ý´æ´¢ï¿½ï¿½Ê¹ï¿½ï¿½ï¿½ï¿½??
 
-	// Ð­´¦ÀíÆ÷·ÃÎÊ(??)²Ù×÷Ïà¹ØÊä³ö
+	// Ð­ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½(??)ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	output reg cp0_reg_we_o,
 	output reg[4:0] cp0_reg_write_addr_o,
 	output reg[`RegBus] cp0_reg_data_o,
@@ -55,11 +55,11 @@ module mem(
 );
 	wire[`RegBus] zero32;
 	reg mem_we;
-
+	//reg mem_ce_o;
 	assign pc_mem_o = pc_mem_i;
 	
 	assign zero32 = `ZeroWord;
-	//assign mem_we_o = mem_we;			// RAMµÄ¶Á¡¢Ð´ÐÅºÅ
+	//assign mem_we_o = mem_we;			// RAMï¿½Ä¶ï¿½ï¿½ï¿½Ð´ï¿½Åºï¿½
 	
 	always @ (*) begin
 		// pc_mem_o <= pc_mem_i;
@@ -88,7 +88,7 @@ module mem(
 			mem_we <= `WriteDisable;
 			mem_sel_o <= 4'b1111;
 			mem_ce_o <= `ChipDisable;
-			// °ÑÐ´CP0µÄÏà¹ØÐÅÏ¢ÏòÏÂ´«??
+			// ï¿½ï¿½Ð´CP0ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢ï¿½ï¿½ï¿½Â´ï¿½??
 			cp0_reg_we_o <= cp0_reg_we_i;
 			cp0_reg_write_addr_o <= cp0_reg_write_addr_i;
 			cp0_reg_data_o <= cp0_reg_data_i;
@@ -98,8 +98,8 @@ module mem(
 					mem_addr_o <= (mem_addr_i[31] == 1) ? {3'b000, mem_addr_i[28:0]} : mem_addr_i;
 					mem_we <= `WriteDisable;
 					mem_sel_o <= 4'b0000;
-					mem_ce_o <= `ChipEnable;				// ??Òª·ÃÎÊÊý¾Ý´æ´¢Æ÷
-					// ÒÀ¾ÝÊý¾Ý´æ´¢Æ÷µÄÊäÈëÊý¾Ý??ºóÁ½Î»µÄÖµÈ·¶¨Òª¶ÁÈ¡µÄ×Ö??
+					mem_ce_o <= `ChipEnable;				// ??Òªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý´æ´¢ï¿½ï¿½
+					// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý´æ´¢ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½??ï¿½ï¿½ï¿½ï¿½Î»ï¿½ï¿½ÖµÈ·ï¿½ï¿½Òªï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½??
 					case (mem_addr_i[1:0])			
 						2'b00: begin				//mem_data_i[31:24]
 							wdata_o <= {{24{mem_data_i[31]}}, mem_data_i[31:24]};
@@ -191,6 +191,7 @@ module mem(
 					endcase
 				end
 				`EXE_LW_OP: begin
+					// mem_addr_o <= mem_addr_i;
 					mem_addr_o <= (mem_addr_i[31] == 1) ? {3'b000, mem_addr_i[28:0]} : mem_addr_i;
 					mem_we <= `WriteDisable;
 					mem_ce_o <= `ChipEnable;
@@ -239,10 +240,11 @@ module mem(
 					endcase
 				end
 				`EXE_SW_OP: begin
-					mem_addr_o <= mem_addr_i;
+					mem_addr_o <= (mem_addr_i[31] == 1) ? {3'b000, mem_addr_i[28:0]} : mem_addr_i;
+					//mem_addr_o <= mem_addr_i;
 					mem_we <= `WriteEnable;
 					mem_ce_o <= `ChipEnable;
-					mem_data_o <= {reg2_i[31:0]};
+					mem_data_o <= reg2_i;
 					mem_sel_o <= 4'b1111;
 				end
 			endcase

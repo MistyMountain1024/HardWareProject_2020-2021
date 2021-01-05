@@ -675,7 +675,7 @@ module id(
 					reg1_read_o <= 1'b1;				// 读取base寄存器的�?
 					reg2_read_o <= 1'b1;	  			// 读取rt寄存器的�?	
 					instvalid <= `InstValid;
-					wd_o <= inst_i[20:16];
+					// wd_o <= inst_i[20:16];
 				end
 				`EXE_SH: begin
 					wreg_o <= `WriteDisable;
@@ -684,7 +684,7 @@ module id(
 					reg1_read_o <= 1'b1;	
 					reg2_read_o <= 1'b1;	  			
 					instvalid <= `InstValid;
-					wd_o <= inst_i[20:16];
+					// wd_o <= inst_i[20:16];
 				end
 				`EXE_SW: begin
 					wreg_o <= `WriteDisable;
@@ -693,7 +693,7 @@ module id(
 					reg1_read_o <= 1'b1;	
 					reg2_read_o <= 1'b1;	  			
 					instvalid <= `InstValid;
-					wd_o <= inst_i[20:16];
+					// wd_o <= inst_i[20:16];
 				end															  	
 				default: begin
 				end

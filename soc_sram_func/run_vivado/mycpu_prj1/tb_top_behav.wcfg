@@ -11,15 +11,15 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="1176327416fs"></ZoomStartTime>
-      <ZoomEndTime time="1176470917fs"></ZoomEndTime>
-      <Cursor1Time time="1176447000fs"></Cursor1Time>
+      <ZoomStartTime time="1176646833fs"></ZoomStartTime>
+      <ZoomEndTime time="1176764634fs"></ZoomEndTime>
+      <Cursor1Time time="1176745000fs"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
       <NameColumnWidth column_width="236"></NameColumnWidth>
-      <ValueColumnWidth column_width="134"></ValueColumnWidth>
+      <ValueColumnWidth column_width="114"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="50" />
+   <WVObjectSize size="68" />
    <wvobject fp_name="/tb_top/resetn" type="logic">
       <obj_property name="ElementShortName">resetn</obj_property>
       <obj_property name="ObjectShortName">resetn</obj_property>
@@ -96,6 +96,26 @@
       <obj_property name="ElementShortName">btn_step[1:0]</obj_property>
       <obj_property name="ObjectShortName">btn_step[1:0]</obj_property>
    </wvobject>
+   <wvobject fp_name="/tb_top/soc_lite/data_ram/wea" type="array">
+      <obj_property name="ElementShortName">wea[3:0]</obj_property>
+      <obj_property name="ObjectShortName">wea[3:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top/soc_lite/inst_ram/dina" type="array">
+      <obj_property name="ElementShortName">dina[31:0]</obj_property>
+      <obj_property name="ObjectShortName">dina[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top/soc_lite/inst_ram/douta" type="array">
+      <obj_property name="ElementShortName">douta[31:0]</obj_property>
+      <obj_property name="ObjectShortName">douta[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top/soc_lite/data_ram/dina" type="array">
+      <obj_property name="ElementShortName">dina[31:0]</obj_property>
+      <obj_property name="ObjectShortName">dina[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top/soc_lite/data_ram/douta" type="array">
+      <obj_property name="ElementShortName">douta[31:0]</obj_property>
+      <obj_property name="ObjectShortName">douta[31:0]</obj_property>
+   </wvobject>
    <wvobject fp_name="/tb_top/soc_clk" type="logic">
       <obj_property name="ElementShortName">soc_clk</obj_property>
       <obj_property name="ObjectShortName">soc_clk</obj_property>
@@ -111,6 +131,7 @@
    <wvobject fp_name="/tb_top/debug_wb_rf_wnum" type="array">
       <obj_property name="ElementShortName">debug_wb_rf_wnum[4:0]</obj_property>
       <obj_property name="ObjectShortName">debug_wb_rf_wnum[4:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
    </wvobject>
    <wvobject fp_name="/tb_top/debug_wb_rf_wdata" type="array">
       <obj_property name="ElementShortName">debug_wb_rf_wdata[31:0]</obj_property>
@@ -119,6 +140,34 @@
    <wvobject fp_name="/tb_top/debug_wb_rf_wdata_v" type="array">
       <obj_property name="ElementShortName">debug_wb_rf_wdata_v[31:0]</obj_property>
       <obj_property name="ObjectShortName">debug_wb_rf_wdata_v[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top/soc_lite/data_ram/addra" type="array">
+      <obj_property name="ElementShortName">addra[15:0]</obj_property>
+      <obj_property name="ObjectShortName">addra[15:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top/soc_lite/data_ram/douta" type="array">
+      <obj_property name="ElementShortName">douta[31:0]</obj_property>
+      <obj_property name="ObjectShortName">douta[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top/soc_lite/cpu/mem_wb0/mem_wdata" type="array">
+      <obj_property name="ElementShortName">mem_wdata[31:0]</obj_property>
+      <obj_property name="ObjectShortName">mem_wdata[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top/soc_lite/cpu/mem_wb0/wb_wdata" type="array">
+      <obj_property name="ElementShortName">wb_wdata[31:0]</obj_property>
+      <obj_property name="ObjectShortName">wb_wdata[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top/soc_lite/cpu/id0/ex_wdata_i" type="array">
+      <obj_property name="ElementShortName">ex_wdata_i[31:0]</obj_property>
+      <obj_property name="ObjectShortName">ex_wdata_i[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top/soc_lite/cpu/id0/mem_wdata_i" type="array">
+      <obj_property name="ElementShortName">mem_wdata_i[31:0]</obj_property>
+      <obj_property name="ObjectShortName">mem_wdata_i[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top/soc_lite/cpu/id0/reg1_o" type="array">
+      <obj_property name="ElementShortName">reg1_o[31:0]</obj_property>
+      <obj_property name="ObjectShortName">reg1_o[31:0]</obj_property>
    </wvobject>
    <wvobject fp_name="/tb_top/trace_ref" type="array">
       <obj_property name="ElementShortName">trace_ref[31:0]</obj_property>
@@ -184,13 +233,9 @@
       <obj_property name="ElementShortName">branch_target_address_o[31:0]</obj_property>
       <obj_property name="ObjectShortName">branch_target_address_o[31:0]</obj_property>
    </wvobject>
-   <wvobject fp_name="/tb_top/soc_lite/cpu/id0/is_in_delayslot_o" type="logic">
-      <obj_property name="ElementShortName">is_in_delayslot_o</obj_property>
-      <obj_property name="ObjectShortName">is_in_delayslot_o</obj_property>
-   </wvobject>
-   <wvobject fp_name="/tb_top/soc_lite/cpu/id0/reg1_o" type="array">
-      <obj_property name="ElementShortName">reg1_o[31:0]</obj_property>
-      <obj_property name="ObjectShortName">reg1_o[31:0]</obj_property>
+   <wvobject fp_name="/tb_top/soc_lite/cpu/id0/is_in_delayslot_i" type="logic">
+      <obj_property name="ElementShortName">is_in_delayslot_i</obj_property>
+      <obj_property name="ObjectShortName">is_in_delayslot_i</obj_property>
    </wvobject>
    <wvobject fp_name="/tb_top/soc_lite/cpu/id0/reg2_o" type="array">
       <obj_property name="ElementShortName">reg2_o[31:0]</obj_property>
@@ -219,5 +264,33 @@
    <wvobject fp_name="/tb_top/soc_lite/cpu/regfile1/wdata" type="array">
       <obj_property name="ElementShortName">wdata[31:0]</obj_property>
       <obj_property name="ObjectShortName">wdata[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top/soc_lite/cpu/mem0/mem_data_o" type="array">
+      <obj_property name="ElementShortName">mem_data_o[31:0]</obj_property>
+      <obj_property name="ObjectShortName">mem_data_o[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top/soc_lite/data_ram/dina" type="array">
+      <obj_property name="ElementShortName">dina[31:0]</obj_property>
+      <obj_property name="ObjectShortName">dina[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top/soc_lite/confreg/conf_addr" type="array">
+      <obj_property name="ElementShortName">conf_addr[31:0]</obj_property>
+      <obj_property name="ObjectShortName">conf_addr[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top/soc_lite/data_ram/douta" type="array">
+      <obj_property name="ElementShortName">douta[31:0]</obj_property>
+      <obj_property name="ObjectShortName">douta[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top/soc_lite/confreg/conf_wdata" type="array">
+      <obj_property name="ElementShortName">conf_wdata[31:0]</obj_property>
+      <obj_property name="ObjectShortName">conf_wdata[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top/soc_lite/confreg/conf_rdata" type="array">
+      <obj_property name="ElementShortName">conf_rdata[31:0]</obj_property>
+      <obj_property name="ObjectShortName">conf_rdata[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_top/soc_lite/confreg/conf_rdata_reg" type="array">
+      <obj_property name="ElementShortName">conf_rdata_reg[31:0]</obj_property>
+      <obj_property name="ObjectShortName">conf_rdata_reg[31:0]</obj_property>
    </wvobject>
 </wave_config>

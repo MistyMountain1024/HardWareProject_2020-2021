@@ -33,7 +33,7 @@ module mycpu_top(
 	output wire[4:0] debug_wb_rf_wnum,
 	output wire[`RegBus] debug_wb_rf_wdata
 );
-
+	
 	assign inst_sram_wen= 4'b0000;
 	assign inst_sram_wdata = `ZeroWord;
 	wire[`InstAddrBus] pc;
@@ -476,8 +476,7 @@ module mycpu_top(
 		.mem_addr_o(data_sram_addr),
 		//.mem_we_o(data_sram_wen),
 		.mem_sel_o(data_sram_wen),
-		.mem_data_o(data_sram_wdata
-),
+		.mem_data_o(data_sram_wdata),
 		.mem_ce_o(data_sram_en),
 
 		// 协处理器访问操作相关输入
