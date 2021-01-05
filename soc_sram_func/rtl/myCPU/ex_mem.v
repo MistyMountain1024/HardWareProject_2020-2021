@@ -64,9 +64,6 @@ module ex_mem(
 			mem_cp0_reg_write_addr <= 5'b00000;
 			mem_cp0_reg_data <= `ZeroWord;
 			pc_mem_i <= `ZeroWord;
-			mem_aluop <= `EXE_NOP_OP;
-			mem_mem_addr <= `ZeroWord;
-			mem_reg2 <= `ZeroWord;
 		end else if (stall[3] == `Stop && stall[4] == `NoStop) begin		// ?????????????
 			mem_wd <= `NOPRegAddr;
 			mem_wreg <= `WriteDisable;
@@ -78,9 +75,6 @@ module ex_mem(
 			mem_cp0_reg_write_addr <= 5'b00000;
 			mem_cp0_reg_data <= `ZeroWord;
 			pc_mem_i <= `ZeroWord;
-			mem_aluop <= `EXE_NOP_OP;
-			mem_mem_addr <= `ZeroWord;
-			mem_reg2 <= `ZeroWord;
 		end else if (stall[3] == `NoStop) begin							// ??????
 			mem_wd <= ex_wd;
 			mem_wreg <= ex_wreg;

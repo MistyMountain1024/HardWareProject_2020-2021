@@ -33,7 +33,7 @@ module mycpu_top(
 	output wire[4:0] debug_wb_rf_wnum,
 	output wire[`RegBus] debug_wb_rf_wdata
 );
-	
+
 	assign inst_sram_wen= 4'b0000;
 	assign inst_sram_wdata = `ZeroWord;
 	wire[`InstAddrBus] pc;
